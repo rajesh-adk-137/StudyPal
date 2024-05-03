@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Navbar from '../../components/Navbar'
-
+import Footer from '../../components/Footer'
 const McqQns = () => {
     const questions = [
         {
@@ -21,53 +21,13 @@ const McqQns = () => {
             "hint": "Animals exhale this gas.",
             "answer": "Carbon Dioxide"
         },
-        {
-            "question": "What is the largest planet in our solar system?",
-            "options": ["Mars", "Jupiter", "Saturn", "Venus"],
-            "hint": "It's known for its Great Red Spot.",
-            "answer": "Jupiter"
-        },
-        {
-            "question": "What year did the Titanic sink?",
-            "options": ["1912", "1905", "1898", "1923"],
-            "hint": "The event occurred in April during the early 20th century.",
-            "answer": "1912"
-        },
-        {
-            "question": "Which element is represented by the symbol 'O'?",
-            "options": ["Gold", "Oxygen", "Osmium", "Oladium"],
-            "hint": "It is essential for breathing.",
-            "answer": "Oxygen"
-        },
-        {
-            "question": "In computing, what does CPU stand for?",
-            "options": ["Central Processing Unit", "Central Process Unit", "Computer Personal Unit", "Central Processor Unit"],
-            "hint": "It is known as the brain of the computer.",
-            "answer": "Central Processing Unit"
-        },
-        {
-            "question": "Who wrote 'To Kill a Mockingbird'?",
-            "options": ["Harper Lee", "Mark Twain", "Stephen King", "J.K. Rowling"],
-            "hint": "The author is from Alabama.",
-            "answer": "Harper Lee"
-        },
-        {
-            "question": "What is the hardest natural substance on Earth?",
-            "options": ["Gold", "Iron", "Diamond", "Quartz"],
-            "hint": "This substance is often used in jewelry.",
-            "answer": "Diamond"
-        },
-        {
-            "question": "What is the chemical formula for table salt?",
-            "options": ["NaCl", "HCl", "NaHCO3", "C12H22O11"],
-            "hint": "This compound is composed of sodium and chlorine.",
-            "answer": "NaCl"
-        }
     ];
-    
+
 
     const [selectedOptions, setSelectedOptions] = useState([questions.map(() => '')]);
-    const [score,setScore] = useState(0)
+    const [score, setScore] = useState(0)
+    const [hintsShown, setHintsShown] = useState(new Array(questions.length).fill(false));
+    const [submitted, setSubmitted] = useState(false);
 
     const handleOptionChange = (questionIndex, option) => {
         const newSelectedOptions = [...selectedOptions];
@@ -75,16 +35,18 @@ const McqQns = () => {
         setSelectedOptions(newSelectedOptions);
     };
 
-    const checkAnswer=()=>{
-        console.log(selectedOptions)
-        questions.map((question,index)=>{
-            console.log(question.answer)
-            if(selectedOptions[index]==question.answer){
-                setScore(score+1)
+    const checkAnswer = () => {
+        let newScore = 0;
+        questions.forEach((question, index) => {
+            if (selectedOptions[index] === question.answer) {
+                newScore += 1;
             }
-        })
-        console.log("Score=",score)
-    }
+        });
+        setScore(newScore);
+        setSubmitted(true);
+        console.log("Score=", newScore);
+        window.scrollTo(0, 0);
+    };
 
 
     return (
@@ -93,59 +55,69 @@ const McqQns = () => {
                 <Navbar />
             </div>
             <div className='bg-blue-50 h-full p-14 flex justify-center flex-col items-center'>
-                <div className='w-[75%] bg-white p-10 border-t-8 border-t-blue-900 rounded-t-lg'>
+                <div className='md:w-[75%] bg-white p-10 border-t-8 border-t-blue-900 rounded-t-lg'>
                     <h1 className="text-5xl font-bold mb-2">Question and answer</h1>
                     <hr />
+                    {
+                        submitted? <p className='text-3xl font-bold mt-8 text-center text-gray-800'>YOUR SCORE IS: <span className='text-4xl text-blue-900'>{score}{'/'}{questions.length}</span> </p>
+                        :
                     <p className="text-xl text-gray-800 my-4">Answer provided questions. You can ask copilot for hints or explain questions which you do not understand.</p>
+                    }
                 </div>
+
                 {questions.map((question, index) => (
                     <Question
                         key={index}
-                        qno = {index+1}
+                        qno={index + 1}
                         question={question}
                         selectedOption={selectedOptions[index]}
-                        onOptionChange={(option) => handleOptionChange(index, option)}
+                        showHint={hintsShown[index]}
+                        onOptionChange={handleOptionChange}
+                        isSubmitted={submitted}
+                        isCorrect={selectedOptions[index] === question.answer}
                     />
                 ))}
 
                 <div>
-                    <button className='px-5 py-2 my-4 bg-blue-900 text-white text-lg' onClick={checkAnswer}>Submit</button>
+                    <button className='px-5 py-2 my-4 bg-blue-900 text-white text-lg' onClick={checkAnswer} disabled={submitted}>Submit</button>
                 </div>
             </div>
+            <Footer/>
         </>
     )
 }
 
-const Question = ({ qno,question, selectedOption, onOptionChange }) => {
-    const [showHint, setShowhint] = useState(true)
+const Question = ({ qno, question, selectedOption, showHint, onOptionChange, isSubmitted, isCorrect }) => {
+    // const [showHint, setShowhint] = useState(true)
     return (
         <>
-                <div className='w-[75%] bg-white mt-4 p-10'>
-                    <h1 className="text-3xl font-[500] mb-2">{qno}. {question.question}</h1>
-                    <hr />
-                    <form>
-                        {question.options.map((option, index) => (
-                            <div key={index} className="my-2">
-                                <label className="inline-flex items-center text-lg">
-                                    <input
-                                        type="radio"
-                                        name={`option-${question.question}`}
-                                        value={option}
-                                        checked={selectedOption === option}
-                                        onChange={() => onOptionChange(option)}
-                                        className="form-radio h-4 w-4"
-                                    />
-                                    <span className="ml-2">{option}</span>
-                                </label>
-                            </div>
-                        ))}
-                    </form>
-                    {showHint && (
-                        <div className="mt-2 p-2 border rounded bg-gray-50">
-                            <p><span className='text-red-700 font-bold'>Hint:</span> {question.hint}</p>
+            <div className='md:w-[75%] bg-white mt-4 p-10'>
+                <h1 className="text-3xl font-[500] mb-2">{qno}. {question.question}</h1>
+                <hr />
+                <form>
+                    {question.options.map((option, index) => (
+                        <div key={index} className="my-2">
+                            <label className="inline-flex items-center text-lg">
+                                <input
+                                    type="radio"
+                                    name={`option-${question.question}`}
+                                    value={option}
+                                    checked={selectedOption === option}
+                                    onChange={() => onOptionChange(qno - 1, option)}
+                                    disabled={isSubmitted}
+                                    className={`form-radio h-4 w-4 ${isSubmitted ? (option === question.answer ? 'text-green-500' : selectedOption === option ? 'text-red-500' : '') : ''}`}
+                                />
+                                <span className={`ml-2 ${isSubmitted ? (option === question.answer ? 'text-green-500' : selectedOption === option ? 'text-red-500' : '') : ''}`}>{option}</span>
+                            </label>
                         </div>
-                    )}
-                </div>
+                    ))}
+                </form>
+                {showHint && (
+                    <div className="mt-2 p-2 border rounded bg-gray-50">
+                        <p><span className='text-red-700 font-bold'>Hint:</span> {question.hint}</p>
+                    </div>
+                )}
+            </div>
         </>
     )
 }

@@ -21,7 +21,7 @@ const Navbar = () => {
                 </div>
             </header>
             <div className='flex justify-center items-center'> 
-                <button className='bg-gray-300 hover:bg-gray-400 text-black md:px-5 md:py-2 rounded-md flex items-center space-x-2'> 
+                <button className='bg-gray-300 hover:bg-gray-400 text-black md:px-5 md:py-2 rounded-md md:flex items-center space-x-2 hidden'> 
                     <FaGithub />
                     <span>GitHub</span> 
                 </button>

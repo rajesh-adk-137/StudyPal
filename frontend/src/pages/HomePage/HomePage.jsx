@@ -2,16 +2,15 @@ import React from 'react'
 import { CopilotKit } from "@copilotkit/react-core";
 import "@copilotkit/react-ui/styles.css";
 import { CopilotPopup } from "@copilotkit/react-ui";
+import McqQns from './McqQns';
 
 const HomePage = () => {
     return (
         <>
-            <div className="bg-black text-white">Copilotkit testing</div>
+            {/* <div className="bg-black text-white">Copilotkit testing</div>
             <CopilotKit url="http://localhost:5174/api">
 
                 <div style={{ "--copilot-kit-primary-color": "#7D5BA6" }}>
-
-                    {/* <CopilotTextarea/> */}
 
                     <CopilotPopup
                         instructions={
@@ -29,7 +28,9 @@ const HomePage = () => {
 
                 </div>
 
-            </CopilotKit>
+            </CopilotKit> */}
+            <McqQns/>
+            
         </>
     )
 }

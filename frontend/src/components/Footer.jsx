@@ -10,7 +10,7 @@ const Footer = ({darkMode=true}) => {
       <div className=" mx-auto flex  justify-evenly items-center w-full ">
         <div className="flex flex-col gap-1 justify-center items-start">
           <Link to="/">
-            <div className="text-4xl font-bold">COPILOT</div>
+            <div className="text-2xl md:text-4xl font-bold">COPILOT</div>
           </Link>
           <div className="text-xl text-gray-600">Learn using AI.</div>
           <div className="mt-3 flex text-xl gap-2 text-gray-500 ">
@@ -21,7 +21,7 @@ const Footer = ({darkMode=true}) => {
             <FaLinkedin className="hover:text-white" />
           </div>
         </div>
-        <div className="flex justify-end items-start gap-x-32 w-2/5">
+        <div className="flex justify-end items-start gap-x-14 md:gap-x-32 w-2/5">
           <div className="flex flex-col gap-3">
             <div className="hover:text-white hover:cursor-pointer">About Us</div>
             <div className="hover:text-white hover:cursor-pointer">Features</div>
