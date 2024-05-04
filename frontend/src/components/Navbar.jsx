@@ -5,7 +5,7 @@ import { FaGithub } from "react-icons/fa";
 const Navbar = () => {
     return (
         <div className="navbar flex justify-center">
-            <header className='w-[80%] h-14 flex justify-between text-white mt-2 items-center mx-5'>
+            <header className='w-[80%] h-16 flex justify-between text-white mt-2 items-center mx-5'>
                 <Link to='/'> <div className="text-3xl font-[500] tracking-wider">
                     CopilotKit
                 </div>

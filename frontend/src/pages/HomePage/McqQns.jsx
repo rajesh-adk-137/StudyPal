@@ -11,6 +11,16 @@ import { CopilotPopup } from "@copilotkit/react-ui";
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 
+const PracticeMCQ = () => {
+    return (
+        <>
+            <CopilotKit url="http://localhost:5174/api">
+                <McqQns />
+            </CopilotKit>
+        </>
+    )
+}
+
 const McqQns = () => {
     const [questions, setQuestions] = useState([
         {
@@ -40,7 +50,7 @@ const McqQns = () => {
     const [submitted, setSubmitted] = useState(false);
     const [instructions, setInstructions] = useState(
         "Help the user solve the questions. If the user asks for direct answers, don't provide answers to them., " +
-        "You can explain questions if user does not understand questions."
+        "You can explain questions if user does not understand questions and show them hints if asked for solutions."
     )
     // const [hints, setHints] = useState(false);
 
@@ -75,7 +85,7 @@ const McqQns = () => {
             const newHintsShown = [...hintsShown];
             newHintsShown[questionNo] = showHint;
             setHintsShown(newHintsShown)
-            if(hintUsed[questionNo]==false){
+            if (hintUsed[questionNo] == false) {
                 hintUsed[questionNo] = showHint
             }
         },
@@ -121,9 +131,9 @@ const McqQns = () => {
         // console.log("Score=", newScore);
         window.scrollTo(0, 0);
         setInstructions("Help the user solve the questions. If the user asks for direct solutions or answers, you can provide direct solutions or answers to them., " +
-        "You can how their answers are wrong.")
+            "You can how their answers are wrong.")
     };
-    
+
 
     useEffect(() => {
     }, [hintsShown, questions])
@@ -166,37 +176,16 @@ const McqQns = () => {
             </div>
             <Footer />
             {/* <div style={{ "--copilot-kit-primary-color": "#7D5BA6", "backgroundColor":"#FD5BA6" }}> */}
-            {submitted == false &&
-                <CopilotPopup
-                    instructions={
-                        "Help the user solve the questions. If the user asks for direct answers, don't provide answers to them., " +
-                        "You can explain questions if user does not understand questions."
-                    }
-                    defaultOpen={false}
-                    labels={{
-                        title: "Copilot",
-                        initial: "Hi you! 👋 I can help you with your questions.",
-                    }}
-                    clickOutsideToClose={false}
-                />
-            }
-            {submitted == true &&
-                <CopilotPopup
-                    instructions={
-                        "Help the user solve the questions. If the user asks for direct solutions or answers, you can provide direct solutions or answers to them., " +
-                        "You can how their answers are wrong."
-                    }
-                    defaultOpen={false}
-                    labels={{
-                        title: "Copilot",
-                        initial: "Hi you! 👋 How Can I Help you?.",
-                    }}
-                    clickOutsideToClose={false}
-                />
-            }
 
-
-
+            <CopilotPopup
+                instructions={instructions}
+                defaultOpen={false}
+                labels={{
+                    title: "Copilot",
+                    initial: "Hi you! 👋 I can help you with your questions.",
+                }}
+                clickOutsideToClose={false}
+            />
             {/* </CopilotKit> */}
         </>
     )
@@ -241,4 +230,4 @@ const Question = ({ qno, question, selectedOption, showHint, hintUsed, onOptionC
     )
 }
 
-export default McqQns
+export default PracticeMCQ

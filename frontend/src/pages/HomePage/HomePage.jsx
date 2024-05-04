@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import Navbar from '../../components/Navbar';
+import Footer from '../../components/Footer';
 
 const HomePage = () => {
   const [selectedSubject, setSelectedSubject] = useState('');
@@ -29,7 +30,7 @@ const HomePage = () => {
       <Navbar />
       <div className="flex items-center justify-center">
         <div className="container mx-auto p-8 rounded-lg shadow-md bg-white" style={gradientStyle}>
-          <div className="px-16 py-20 rounded-lg shadow-md bg-gradient-to-r from-[#0055b8] to-black">
+          <div className="px-16 py-20 rounded-lg shadow-md bg-black">
             <div className="text-center mb-12">
               <h1 className="text-6xl font-bold text-green-400">Your Study Guide</h1>
               <p className="text-xl text-white mt-6">Select your requirements below and get content for quick revision.</p>
@@ -85,7 +86,7 @@ const HomePage = () => {
                     <MdKeyboardDoubleArrowRight className="text-3xl" />
                   </button>
                 </Link>
-                <Link to="/">
+                <Link to="/mcq">
                   <button className='bg-green-500 text-white font-bold px-8 py-5 rounded-lg flex items-center justify-center space-x-2 transition duration-300 ease-in-out hover:bg-green-600 hover:shadow-lg'>
                     <span className="text-xl">Practice MCQs</span>
                     <MdKeyboardDoubleArrowRight className="text-3xl" />
@@ -96,6 +97,7 @@ const HomePage = () => {
           </div>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 }
