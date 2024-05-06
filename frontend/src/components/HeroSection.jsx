@@ -13,19 +13,21 @@ const HeroSection = () => {
             <div className=' flex justify-center items-center col-span-2'>
                 <div>
                     <h1 className='text-green-400 text-xl tracking-widest'>LEARNING WITH AI</h1>
-                    <h1 className='text-5xl md:text-8xl font-bold my-3'>AMAZINGLY SIMPLE</h1>
-                    <p className='text-xl md:text-2xl text-[#aaabc4] my-10'>We designed with CopilotKit to improve your learning performance by explaning questions and their solutions and provide ai assiistant to generate your daily routine.</p>
+                    <h1 className='text-5xl md:text-8xl font-bold my-3'>STUDY COMPANION</h1>
+                    <p className='text-xl md:text-2xl text-[#aaabc4] my-10'>Revolutionize the way you study with StudyPal – a cutting-edge web-based platform designed to make learning smarter, easier, and more personalized than ever before.</p>
                     <div className='flex flex-row gap-10'>
-                        <Link to="/home">
-                        <button className='bg-[#171a8d] text-[#5ce1ff] font-bold px-5 py-3 rounded-lg flex items-center justify-center space-x-2 transition duration-300 ease-in-out hover:bg-[#0f0e69] hover:shadow-lg'>
-                            <span>TRY IT NOW</span>
-                            <MdKeyboardDoubleArrowRight className="text-xl" />
-                        </button>
+                        <Link to="/mcq">
+                            <button className='bg-[#171a8d] text-[#5ce1ff] font-bold px-5 py-3 rounded-lg flex items-center justify-center space-x-2 transition duration-300 ease-in-out hover:bg-[#0f0e69] hover:shadow-lg'>
+                                <span>TRY IT NOW</span>
+                                <MdKeyboardDoubleArrowRight className="text-xl" />
+                            </button>
                         </Link>
-                        <button className='bg-[#4fe331] text-black font-bold px-5 py-3 rounded-lg flex items-center justify-center space-x-2 transition duration-300 ease-in-out hover:bg-[#3fb427] hover:shadow-lg'>
-                            <span>VOTE ON QUINE</span>
-                            <MdKeyboardDoubleArrowRight className="text-xl" />
-                        </button>
+                        <a href="https://quine.sh/quests/creator">
+                            <button className='bg-[#4fe331] text-black font-bold px-5 py-3 rounded-lg flex items-center justify-center space-x-2 transition duration-300 ease-in-out hover:bg-[#3fb427] hover:shadow-lg'>
+                                <span>VOTE ON QUINE</span>
+                                <MdKeyboardDoubleArrowRight className="text-xl" />
+                            </button>
+                        </a>
                     </div>
                 </div>
             </div>

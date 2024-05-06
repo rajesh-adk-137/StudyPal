@@ -10,9 +10,9 @@ const Footer = ({darkMode=true}) => {
       <div className=" mx-auto flex  justify-evenly items-center w-full ">
         <div className="flex flex-col gap-1 justify-center items-start">
           <Link to="/">
-            <div className="text-2xl md:text-4xl font-bold">COPILOT</div>
+            <div className="text-2xl md:text-4xl font-bold"><span>Study</span><span className='text-blue-400'>Pal</span> </div>
           </Link>
-          <div className="text-xl text-gray-600">Learn using AI.</div>
+          <div className="text-xl text-gray-600">Your Personalized Learning Companion.</div>
           <div className="mt-3 flex text-xl gap-2 text-gray-500 ">
             <FaFacebook className="hover:text-white" />
             <FaInstagram className="hover:text-white" />
@@ -23,20 +23,20 @@ const Footer = ({darkMode=true}) => {
         </div>
         <div className="flex justify-end items-start gap-x-14 md:gap-x-32 w-2/5">
           <div className="flex flex-col gap-3">
-            <div className="hover:text-white hover:cursor-pointer">About Us</div>
+            <a href="https://github.com/rajesh-adk-137"><div className="hover:text-white hover:cursor-pointer">About Us</div></a>
             <div className="hover:text-white hover:cursor-pointer">Features</div>
-            <div className="hover:text-white hover:cursor-pointer">Feedback</div>
-            <div className="hover:text-white hover:cursor-pointer">Contact Us</div>
+            <a href="https://github.com/rajesh-adk-137"><div className="hover:text-white hover:cursor-pointer">Feedback</div></a>
+            <a href="https://github.com/rajesh-adk-137"><div className="hover:text-white hover:cursor-pointer">Contact Us</div></a>
           </div>
           <div className="flex flex-col gap-3">
             
-            <div className="hover:text-white hover:cursor-pointer">Partner</div>
-            <div className="hover:text-white hover:cursor-pointer">FAQ</div>
+          <a href="https://quine.sh/"><div className="hover:text-white hover:cursor-pointer">Quine</div></a>
+          <a href="https://www.copilotkit.ai/"><div className="hover:text-white hover:cursor-pointer">CopilotKit</div></a>
           </div>
         </div>
       </div>
       <div className="text-gray-600 text-lg">
-        &#169; Copilot 2024. All rights reserved.
+        &#169; StudyPal 2024. All rights reserved.
       </div>
     </div>
   );

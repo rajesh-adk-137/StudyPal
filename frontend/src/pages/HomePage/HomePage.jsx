@@ -163,12 +163,12 @@ const HomePageExtend = () => {
                     <MdKeyboardDoubleArrowRight className="text-3xl" />
                   </button>
                   {/* </Link> */}
-                  <Link to="/mcq">
+                  {/* <Link to="/mcq">
                     <button className='bg-green-500 text-white font-bold px-8 py-5 rounded-lg flex items-center justify-center space-x-2 transition duration-300 ease-in-out hover:bg-green-600 hover:shadow-lg'>
                       <span className="text-xl">Practice MCQs</span>
                       <MdKeyboardDoubleArrowRight className="text-3xl" />
                     </button>
-                  </Link>
+                  </Link> */}
                 </div>
               </div>
             </>}

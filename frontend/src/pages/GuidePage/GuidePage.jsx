@@ -69,7 +69,7 @@ const GuidePageExtend = () => {
           }
           defaultOpen={false}
           labels={{
-            title: "Study Guide Copilot",
+            title: "StudyPal Copilot",
             initial: "Hi you! 👋 I can help you with the guides?",
           }}
           clickOutsideToClose={false}

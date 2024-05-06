@@ -121,7 +121,7 @@ const McqQns = () => {
 
     useCopilotAction({
         name: "updatehintsShown",
-        description: "Show or don't show hints by updating hintsShown useState.",
+        description: "Show or don't show hints by updating hintsShown useState when asked for hints by user. Update hintsShown even when user says to give them hints.",
         parameters: [{
             name: "showHint",
             type: "boolean",
@@ -204,7 +204,7 @@ const McqQns = () => {
                     {
                         submitted ? <p className='text-3xl font-bold mt-8 text-center text-gray-800'>YOUR SCORE IS: <span className='text-4xl text-blue-900'>{score}{'/'}{questions.length}</span> </p>
                             :
-                            <p className="text-xl text-gray-800 my-4">Answer provided questions. You can ask copilot for hints or explain questions which you do not understand.</p>
+                            <p className="text-xl text-gray-800 my-4">You can ask our copilot for questions by providing subject, qualification and additional context to copilot and evaluate yourself. You can ask copilot for hints or explain questions which you do not understand.</p>
                     }
                 </div>
 
@@ -235,8 +235,8 @@ const McqQns = () => {
                 instructions={instructions}
                 defaultOpen={false}
                 labels={{
-                    title: "Copilot",
-                    initial: "Hi you! 👋 I can help you with your questions.",
+                    title: "StydyPal Copilot",
+                    initial: "Hi you! 👋 You can ask me to deliver you personalized MCQ questions and hint to them.",
                 }}
                 clickOutsideToClose={false}
             />
