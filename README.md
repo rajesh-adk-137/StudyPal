@@ -1,5 +1,30 @@
 # StudyPal: Your AI-Powered Personalized Learning Companion
-
+<p align="center">
+    <p align="center">
+        <a href="https://github.com/rajesh-adk-137/StudyPal/" target="blank">
+            <img src="https://img.shields.io/github/watchers/rajesh-adk-137/StudyPal?style=for-the-badge&logo=appveyor" alt="Watchers"/>
+        </a>
+        <a href="https://github.com/rajesh-adk-137/StudyPal/fork" target="blank">
+            <img src="https://img.shields.io/github/forks/rajesh-adk-137/StudyPal?style=for-the-badge&logo=appveyor" alt="Forks"/>
+        </a>
+        <a href="https://github.com/rajesh-adk-137/StudyPal/stargazers" target="blank">
+            <img src="https://img.shields.io/github/stars/rajesh-adk-137/StudyPal?style=for-the-badge&logo=appveyor" alt="Star"/>
+        </a>
+    </p>
+    <p align="center">
+        <a href="https://github.com/rajesh-adk-137/StudyPal/issues" target="blank">
+            <img src="https://img.shields.io/github/issues/rajesh-adk-137/StudyPal?style=for-the-badge&logo=appveyor" alt="Issue"/>
+        </a>
+        <a href="https://github.com/rajesh-adk-137/StudyPal/pulls" target="blank">
+            <img src="https://img.shields.io/github/issues-pr/rajesh-adk-137/StudyPal?style=for-the-badge&logo=appveyor" alt="Open Pull Request"/>
+        </a>
+    </p>
+    <p align="center">
+        <a href="https://github.com/rajesh-adk-137/StudyPal/blob/master/LICENSE" target="blank">
+            <img src="https://img.shields.io/github/license/rajesh-adk-137/StudyPal?style=for-the-badge&logo=appveyor" alt="License" />
+        </a>
+    </p>
+</p>
 StudyPal is an advanced web application that harnesses the power of artificial intelligence to deliver personalized and adaptive learning experiences. By integrating CopilotKit, a robust tool for incorporating large language models (LLMs) into web applications, StudyPal empowers students to embark on customized learning journeys that cater to their unique needs and preferences.
 
 ## Features
@@ -22,11 +47,6 @@ StudyPal is an advanced web application that harnesses the power of artificial i
 - Typescript
   
 ## Getting Started
-
-### Prerequisites
-
-- Node.js 
-- npm 
 
 ### Installation
 
@@ -72,16 +92,41 @@ Inside `HEADERS` you have to change
   "Access-Control-Allow-Origin": "http://localhost:5173",
 ```
 to 
+```bash
+  "Access-Control-Allow-Origin": "YOUR_FRONTEND_BASE_URL",
+```
 
 ## Contributing
 
 We welcome contributions from the community! If you'd like to contribute to StudyPal, please follow these steps:
 
-1. Fork the repository
-2. Create a new branch (`git checkout -b feature/your-feature-name`)
-3. Commit your changes (`git commit -m 'Add your commit message'`)
-4. Push to the branch (`git push origin feature/your-feature-name`)
-5. Open a pull request
+1. *Fork the Repository*: Click the "Fork" button on GitHub to create your copy.
+
+2. *Clone Your Fork*:
+ ```bash
+   git clone https://github.com/yourusername/StudyPal.git
+```
+
+   
+3. *Create a Branch*:
+ ```bash
+   git checkout -b your-branch-name
+```
+ 
+4. *Make Changes*: Implement your changes.
+
+5. *Commit Your Changes*:
+ ```bash
+   git commit -m "Description of your changes"
+```
+
+6. *Push Your Changes*:
+ ```bash
+   git push -u origin your-branch-name
+```
+
+
+7. *Create a Pull Request*: Submit your changes for review.
 
 ## License
 
