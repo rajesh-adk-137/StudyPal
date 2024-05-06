@@ -10,12 +10,12 @@ import "@copilotkit/react-ui/styles.css";
 import { CopilotPopup } from "@copilotkit/react-ui";
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
-import Question from '../McqPage/Question';
+import Question from './Question';
 
 const PracticeMCQ = () => {
     return (
         <>
-            <CopilotKit url="http://localhost:5174/api">
+            <CopilotKit url="http://localhost:3000/api">
                 <McqQns />
             </CopilotKit>
         </>
@@ -192,7 +192,7 @@ const McqQns = () => {
 
     return (
         <>
-            {/* <CopilotKit url="http://localhost:5174/api"> */}
+            {/* <CopilotKit url="http://localhost:3000/api"> */}
             <div className="bg-black text-white">
                 <Navbar />
             </div>

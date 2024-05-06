@@ -11,7 +11,7 @@ import axios from 'axios';
 const GuidePage = () => {
   return (
     <>
-      <CopilotKit url="http://localhost:5174/api">
+      <CopilotKit url="http://localhost:3000/api">
         <GuidePageExtend />
       </CopilotKit>
     </>
@@ -33,7 +33,7 @@ const GuidePageExtend = () => {
         };
 
         // Only the URL is necessary if no params are sent
-        const response = await axios.get('http://localhost:5174/getGuide', { params });
+        const response = await axios.get('http://localhost:3000/getGuide', { params });
 
         if (response.status === 200) {
           console.log("Data fetched successfully.");
@@ -59,7 +59,7 @@ const GuidePageExtend = () => {
 
       </div>
       {/* <div className="bg-black text-white">Copilotkit testing</div> */}
-      {/* <CopilotKit url="http://localhost:5174/api"> */}
+      {/* <CopilotKit url="http://localhost:3000/api"> */}
       <div style={{ "--copilot-kit-primary-color": "#7D5BA6" }}>
 
         <CopilotPopup

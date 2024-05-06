@@ -44,10 +44,10 @@ app.post('/guide', async (request, response) => {
   // Utilize received data to process or set the revision information
   try {
     // const revisionText = `Revision set for ${selectedSubject} with ${selectedQualification}. Additional notes: ${additionalContext}`//example revision points
-    const revisionText = [
-      "Review and practice solving linear equations and inequalities.",
-      "Understand and apply the quadratic formula and factoring techniques to solve quadratic equations.",
-    ]
+    // const revisionText = [
+    //   "Review and practice solving linear equations and inequalities.",
+    //   "Understand and apply the quadratic formula and factoring techniques to solve quadratic equations.",
+    // ]
     const aiResponse = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
       messages: [{ role: "system", content: `Generate an array of guide sentences like formulas or ideas for the ${selectedSubject} subject for ${selectedQualification}. Additional context: ${additionalContext}. Give it to me in form of array of points and it must contain 5-8 points. Only provide me array don't provide me any other informations.` }],
@@ -77,7 +77,7 @@ app.get('/getGuide', async (request, response) => {
   })
 })
 
-// Listen on port 5173
-app.listen(5174, () => {
-  console.log('Server is running on http://localhost:5174');
+// Listen on port 3000
+app.listen(3000, () => {
+  console.log('Server is running on http://localhost:3000');
 });

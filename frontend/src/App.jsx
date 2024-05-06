@@ -1,8 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import LandingPage from "./pages/LandingPage/LandingPage";
-import HomePage from "./pages/HomePage/HomePage";
+import HomePage from "./pages/GuidePage/HomePage";
 import GuidePage from "./pages/GuidePage/GuidePage";
-import PracticeMCQ from "./pages/HomePage/McqQns";
+import PracticeMCQ from "./pages/McqPage/McqQns";
 function App() {
 
   return (

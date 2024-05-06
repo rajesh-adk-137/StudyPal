@@ -9,7 +9,7 @@ import axios from 'axios';
 const HomePage = () => {
   return (
     <>
-      <CopilotKit url="http://localhost:5174/api">
+      <CopilotKit url="http://localhost:3000/api">
         <HomePageExtend />
       </CopilotKit>
     </>
@@ -83,7 +83,7 @@ const HomePageExtend = () => {
     e.preventDefault();
 
     try {
-        const response = await axios.post('http://localhost:5174/guide', data);
+        const response = await axios.post('http://localhost:3000/guide', data);
 
         if (response.status == 200) {
             console.log("data submitted successfully.");
