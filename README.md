@@ -10,6 +10,17 @@ StudyPal is an advanced web application that harnesses the power of artificial i
 - **Rationale Insights**: Query the AI copilot for detailed explanations and rationales behind each answer choice, promoting critical thinking and a deeper understanding of the subject matter.
 - **Progress Tracking and Scoreboard**: Track progress and measure performance during MCQ practice sessions with a comprehensive scoreboard feature, fostering continuous learning and improvement.
 
+## Demo
+<video src="https://github.com/rajesh-adk-137/StudyPal/assets/89499267/c55888e5-f8b4-4845-b12e-fade5ae0514d"></video>
+
+## Dependencies
+- React
+- Node
+- Express
+- Tailwind
+- CopilotKit
+- Typescript
+  
 ## Getting Started
 
 ### Prerequisites
@@ -19,31 +30,48 @@ StudyPal is an advanced web application that harnesses the power of artificial i
 
 ### Installation
 
-1. Clone the repository:
+#### Clone the repository:
 ```bash
 git clone https://github.com/rajesh-adk-137/StudyPal.git
 ```
+#### Go to repository:
+```bash
+cd StydyPal
+```
+#### Install dependencies:
+Navigate to the frontend and backend directory
 
-2. Install dependencies:
 ```bash
 npm install
 ```
 
-3. Set up environment variables:
+#### Set up environment variables:
 Create a `.env.local` file in the backend directory and add your OpenAI API key:
 ```bash
 OPENAI_API_KEY=YOUR_OPENAI_API_KEY
 ```
 
-4. Start the development server:
-For the frontend:
+#### Start the development server:
+For the frontend (inside frontend directory):
 ```bash
 npm run dev
 ```
-For the backend:
+
+For the backend (inside backend directory):
 ```bash
-npm run start
+npm start
 ```
+
+#### Visit the Page
+```bash
+Open your browser and navigate to http://localhost:5173.
+```
+If your frontend is not running on `http://localhost:5173` but some other url then you have to change cors address from `backend\server.js`.
+Inside `HEADERS` you have to change
+```bash
+  "Access-Control-Allow-Origin": "http://localhost:5173",
+```
+to 
 
 ## Contributing
 
