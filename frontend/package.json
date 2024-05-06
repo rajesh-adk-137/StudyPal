@@ -13,6 +13,7 @@
     "@copilotkit/react-core": "^0.24.0",
     "@copilotkit/react-textarea": "^0.34.0",
     "@copilotkit/react-ui": "^0.21.0",
+    "axios": "^1.6.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.2.0",

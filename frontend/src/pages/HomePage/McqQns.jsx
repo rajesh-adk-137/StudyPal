@@ -10,6 +10,7 @@ import "@copilotkit/react-ui/styles.css";
 import { CopilotPopup } from "@copilotkit/react-ui";
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
+import Question from '../McqPage/Question';
 
 const PracticeMCQ = () => {
     return (
@@ -29,18 +30,6 @@ const McqQns = () => {
             "hint": "Subtract 2 from 4.",
             "answer": "2"
         },
-        {
-            "question": "What is the capital of France?",
-            "options": ["Paris", "Rome", "Berlin", "Madrid"],
-            "hint": "It's also called the City of Lights.",
-            "answer": "Paris"
-        },
-        {
-            "question": "What gas do plants absorb from the atmosphere for photosynthesis?",
-            "options": ["Oxygen", "Nitrogen", "Carbon Dioxide", "Hydrogen"],
-            "hint": "Animals exhale this gas.",
-            "answer": "Carbon Dioxide"
-        },
     ]);
 
     const [selectedOptions, setSelectedOptions] = useState([questions.map(() => '')]);
@@ -48,6 +37,7 @@ const McqQns = () => {
     const [hintsShown, setHintsShown] = useState(new Array(questions.length).fill(false));
     const [hintUsed, setHintUsed] = useState(new Array(questions.length).fill(false));
     const [submitted, setSubmitted] = useState(false);
+    const [showQuestion, setShowQuestion] = useState(false)
     const [instructions, setInstructions] = useState(
         "Help the user solve the questions. If the user asks for direct answers, don't provide answers to them., " +
         "You can explain questions if user does not understand questions and show them hints if asked for solutions."
@@ -63,6 +53,68 @@ const McqQns = () => {
     useMakeCopilotReadable(
         "This is the questions with their options, hint and answers: " + JSON.stringify(questions)
     );
+
+    useCopilotAction({
+        name: "newQuestions",
+        description: `Provide questions based on conditions given. If number of questions are not specified provide 10 of them. Do not tell questions and options in chat`,
+        parameters: [{
+            name: "items",
+            type: "object[]",
+            description: 'The new questions.',
+            attributes: [{
+                name: "question",
+                type: "string",
+                description: 'The MCQ questions.'
+            },
+            {
+                name: "option1",
+                type: "string",
+                description: "One of the four options and only one of them is correct."
+            },
+            {
+                name: "option2",
+                type: "string",
+                description: "One of the four options and only one of them is correct."
+            },
+            {
+                name: "option3",
+                type: "string",
+                description: "One of the four options and only one of them is correct."
+            },
+            {
+                name: "option4",
+                type: "string",
+                description: "One of the four options and only one of them is correct."
+            },
+            {
+                name: "hint",
+                type: "string",
+                description: "Hint to the question."
+            },
+            {
+                name: "answer",
+                type: "string",
+                description: "Correct answer among available options."
+            }
+            ],
+        }
+        ],
+        handler: async ({ items }) => {
+            // { question, option1, option2, option3, option4, hint, answer }
+            const newQuestions = items.map(item => ({
+                question: item.question,
+                options: [item.option1, item.option2, item.option3, item.option4],
+                hint: item.hint,
+                answer: item.answer
+            }));
+            setQuestions(newQuestions);
+            setShowQuestion(true)
+            setHintsShown(new Array(newQuestions.length).fill(false));
+            setHintUsed(new Array(newQuestions.length).fill(false));
+        },
+        render: "Updating questions...",
+    });
+
     useMakeCopilotReadable(
         "This is current value of hintsShown usestate to show hints to questions" + JSON.stringify(hintsShown)
     )
@@ -76,17 +128,17 @@ const McqQns = () => {
             description: 'Show or do not show hints.'
         },
         {
-            name: "questionNo",
+            name: "indexNo",
             type: "number",
-            description: "Question number of hint to be shown."
+            description: "Index number of hint to be shown which is question_number-1."
         }
         ],
-        handler: async ({ showHint, questionNo }) => {
+        handler: async ({ showHint, indexNo }) => {
             const newHintsShown = [...hintsShown];
-            newHintsShown[questionNo] = showHint;
+            newHintsShown[indexNo] = showHint;
             setHintsShown(newHintsShown)
-            if (hintUsed[questionNo] == false) {
-                hintUsed[questionNo] = showHint
+            if (hintUsed[indexNo] == false) {
+                hintUsed[indexNo] = showHint
             }
         },
         render: "Updating hints...",
@@ -156,7 +208,7 @@ const McqQns = () => {
                     }
                 </div>
 
-                {questions.map((question, index) => (
+                {showQuestion==true && questions.map((question, index) => (
                     <Question
                         key={index}
                         qno={index + 1}
@@ -169,10 +221,12 @@ const McqQns = () => {
                         isCorrect={selectedOptions[index] === question.answer}
                     />
                 ))}
-
-                <div>
+                {showQuestion==false && 
+                <p className='text-xl text-slate-600 my-24'>Your question and options appear here.</p>
+                }
+                {showQuestion==true && <div>
                     <button className='px-5 py-2 my-4 bg-blue-900 text-white text-lg' onClick={checkAnswer} disabled={submitted}>Submit</button>
-                </div>
+                </div>}
             </div>
             <Footer />
             {/* <div style={{ "--copilot-kit-primary-color": "#7D5BA6", "backgroundColor":"#FD5BA6" }}> */}
@@ -191,43 +245,11 @@ const McqQns = () => {
     )
 }
 
-const Question = ({ qno, question, selectedOption, showHint, hintUsed, onOptionChange, isSubmitted, isCorrect }) => {
-    // const [showHint, setShowhint] = useState(true)
-    return (
-        <>
-            <div className='md:w-[75%] bg-white mt-4 p-10'>
-                <h1 className="text-3xl font-[500] mb-2">
-                    {qno}. {question.question}
-                    {hintUsed[qno - 1] ? <button className=' text-xs align-middle mb-[0.25rem] bg-red-500 text-white rounded-md p-[0.15rem] border ml-3'>Hint Used</button>
-                        : <></>}
-                </h1>
-                <hr />
-                <form>
-                    {question.options.map((option, index) => (
-                        <div key={index} className="my-2">
-                            <label className="inline-flex items-center text-lg">
-                                <input
-                                    type="radio"
-                                    name={`option-${question.question}`}
-                                    value={option}
-                                    checked={selectedOption === option}
-                                    onChange={() => onOptionChange(qno - 1, option)}
-                                    disabled={isSubmitted}
-                                    className={`form-radio h-4 w-4 ${isSubmitted ? (option === question.answer ? 'text-green-500' : selectedOption === option ? 'text-red-500' : '') : ''}`}
-                                />
-                                <span className={`ml-2 font-[500] ${isSubmitted ? (option === question.answer ? 'text-green-500' : selectedOption === option ? 'text-red-500' : '') : ''}`}>{option}</span>
-                            </label>
-                        </div>
-                    ))}
-                </form>
-                {showHint[qno - 1] && (
-                    <div className="mt-2 p-2 border rounded bg-gray-50">
-                        <p><span className='text-red-700 font-bold'>Hint:</span> {question.hint}</p>
-                    </div>
-                )}
-            </div>
-        </>
-    )
-}
 
 export default PracticeMCQ
+
+
+
+
+
+

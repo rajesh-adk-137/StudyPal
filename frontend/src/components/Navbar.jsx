@@ -12,8 +12,8 @@ const Navbar = () => {
                 </Link>
                 <div>
                     <ul className='flex flex-row justify-center gap-3 md:gap-10 place-items-center'>
-                        <Link to='/home'><li className='items-center font-[500] hover:text-blue-400'>HOME</li></Link>
-                        <Link to='/dashboard'><li className='items-center font-[500] hover:text-blue-400'>DASHBOARD</li></Link>
+                        <Link to='/mcq'><li className='items-center font-[500] hover:text-blue-400'>MCQ</li></Link>
+                        <Link to='/home'><li className='items-center font-[500] hover:text-blue-400'>REVISION</li></Link>
                     </ul>
                 </div>
                 <div>

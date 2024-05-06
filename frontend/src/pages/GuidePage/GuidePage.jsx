@@ -1,17 +1,56 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { CopilotKit } from "@copilotkit/react-core";
+import { CopilotKit, useMakeCopilotReadable } from "@copilotkit/react-core";
 import "@copilotkit/react-ui/styles.css";
 import { CopilotPopup } from "@copilotkit/react-ui";
 import { MdKeyboardDoubleArrowRight } from "react-icons/md";
 import { FaHome } from "react-icons/fa";
-import Navbar from '../../components/Navbar'; // Import the Navbar component
+import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
-
-const longParagraph = "This is a sample paragraph. It contains multiple sentences. Each sentence is separated by a period. This paragraph will be broken down into points based on the sentence breaks. The points will be displayed in an ordered list. Each point will be a list item. The list items will be styled using Tailwind CSS classes."
-
+import axios from 'axios';
 const GuidePage = () => {
-  const points = longParagraph.split(". ");
+  return (
+    <>
+      <CopilotKit url="http://localhost:5174/api">
+        <GuidePageExtend />
+      </CopilotKit>
+    </>
+  )
+}
+const GuidePageExtend = () => {
+  const [guides, setGuides] = useState([""])
+
+  useMakeCopilotReadable(
+    "This is the list of guides points: " + JSON.stringify(guides)
+  );
+  // const points = longParagraph.split(". ");
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        // Assuming you might want to use query params, otherwise remove `params`
+        const params = {
+          key: "value" // Example params, replace or remove as necessary
+        };
+
+        // Only the URL is necessary if no params are sent
+        const response = await axios.get('http://localhost:5174/getGuide', { params });
+
+        if (response.status === 200) {
+          console.log("Data fetched successfully.");
+          console.log("Response from guide page:", response.data);
+
+          setGuides(JSON.parse(response.data.revision))
+          console.log(guides)
+        } else {
+          console.error("Fetch failed", response.statusText);
+        }
+      } catch (err) {
+        console.log("Error", err);
+      }
+    };
+
+    fetchData();
+  }, [])
 
   return (
     <div className="bg-blue-50 min-h-screen">
@@ -22,22 +61,22 @@ const GuidePage = () => {
       {/* <div className="bg-black text-white">Copilotkit testing</div> */}
       {/* <CopilotKit url="http://localhost:5174/api"> */}
       <div style={{ "--copilot-kit-primary-color": "#7D5BA6" }}>
-        {/* Homepage structure */}
-        {/* <CopilotPopup
-            instructions={
-              "Help the user manage a todo list. If the user provides a high level goal, " +
-              "break it down into a few specific tasks and add them to the list"
-            }
-            defaultOpen={false}
-            labels={{
-              title: "Study Guide Copilot",
-              initial: "Hi you! 👋 I can help you with the questions?",
-            }}
-            clickOutsideToClose={false}
-          /> */}
+
+        <CopilotPopup
+          instructions={
+            "Help the user understand revision or guide points., " +
+            "Here point number is equivalent to content of index+1 element of array."
+          }
+          defaultOpen={false}
+          labels={{
+            title: "Study Guide Copilot",
+            initial: "Hi you! 👋 I can help you with the guides?",
+          }}
+          clickOutsideToClose={false}
+        />
 
         {/* Headings */}
-        <div className="container mx-auto py-8 ">
+        <div className="container mx-auto py-8 px-14 md:px-24">
           <div className='bg-white p-5 mb-5 rounded-md shadow'>
             <h1 className="text-4xl font-bold text-center mb-2 text-green-500">Quick Revision Material</h1>
             <hr />
@@ -50,7 +89,7 @@ const GuidePage = () => {
           {/* Points */}
           <div className=" rounded-lg ">
             <ol className="space-y-4">
-              {points.map((point, index) => (
+              {guides.map((point, index) => (
                 <li key={index} className="text-lg font-medium bg-white p-4 rounded-md shadow text-black">
                   {point}
                 </li>
