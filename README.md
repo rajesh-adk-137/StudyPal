@@ -27,6 +27,10 @@
 </p>
 StudyPal is an advanced web application that harnesses the power of artificial intelligence to deliver personalized and adaptive learning experiences. By integrating CopilotKit, a robust tool for incorporating large language models (LLMs) into web applications, StudyPal empowers students to embark on customized learning journeys that cater to their unique needs and preferences.
 
+## Dev.to article
+Link to article:
+https://dev.to/rajesh-adk-137/studypal-your-ai-powered-personalized-learning-companion-59d
+
 ## Features
 
 - **Subject Selection and Personalization**: Choose from a curated list of subjects and provide details about your educational background to tailor learning materials and exercises.
