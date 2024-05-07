@@ -56,7 +56,7 @@ git clone https://github.com/rajesh-adk-137/StudyPal.git
 ```
 #### Go to repository:
 ```bash
-cd StydyPal
+cd StudyPal
 ```
 #### Install dependencies:
 Navigate to the frontend directory
