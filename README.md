@@ -36,7 +36,7 @@ StudyPal is an advanced web application that harnesses the power of artificial i
 - **Progress Tracking and Scoreboard**: Track progress and measure performance during MCQ practice sessions with a comprehensive scoreboard feature, fostering continuous learning and improvement.
 
 ## Demo
-<video src="https://github.com/rajesh-adk-137/StudyPal/assets/89499267/c55888e5-f8b4-4845-b12e-fade5ae0514d"></video>
+<video src="https://github.com/rajesh-adk-137/StudyPal/assets/89499267/a06b11c6-ffbc-44b6-96b0-648d2a38cd7c"></video>
 
 ## Dependencies
 - React
@@ -59,8 +59,12 @@ git clone https://github.com/rajesh-adk-137/StudyPal.git
 cd StydyPal
 ```
 #### Install dependencies:
-Navigate to the frontend and backend directory
+Navigate to the frontend directory
 
+```bash
+npm install
+```
+Navigate to backend directory
 ```bash
 npm install
 ```
@@ -70,15 +74,25 @@ Create a `.env.local` file in the backend directory and add your OpenAI API key:
 ```bash
 OPENAI_API_KEY=YOUR_OPENAI_API_KEY
 ```
+**Here we have used `gpt-3.5-turbo` as our OpenAI model. If you want to use different OpenAI model change `model`
+```bash
+    const adapterOptions = {
+      model: "gpt-3.5-turbo"
+    };
+```
+in `backend\server.js`.
 
 #### Start the development server:
-For the frontend (inside frontend directory):
+
+For the frontend (currently inside `StudyPal` directory):
 ```bash
+cd frontend
 npm run dev
 ```
 
-For the backend (inside backend directory):
+For the backend (currently inside `StudyPal` directory):
 ```bash
+cd backend
 npm start
 ```
 
@@ -95,6 +109,12 @@ to
 ```bash
   "Access-Control-Allow-Origin": "YOUR_FRONTEND_BASE_URL",
 ```
+## Screenshots
+
+![Landing](https://github.com/rajesh-adk-137/StudyPal/assets/109226874/3f478f20-601a-495f-ae0d-ed235e13a9fb)
+![image](https://github.com/rajesh-adk-137/StudyPal/assets/109226874/5fd9f9ef-2a23-46d4-9bb5-bf1c1cef0dba)
+![image](https://github.com/rajesh-adk-137/StudyPal/assets/109226874/78b75693-b11c-4fd9-88ca-25058351ac1b)
+![image](https://github.com/rajesh-adk-137/StudyPal/assets/109226874/1d0fc988-b6db-438a-afe3-3a201de66fb3)
 
 ## Contributing
 

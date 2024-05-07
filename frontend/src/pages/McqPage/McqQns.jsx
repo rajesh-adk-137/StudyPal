@@ -196,7 +196,7 @@ const McqQns = () => {
             <div className="bg-black text-white">
                 <Navbar />
             </div>
-            <div className='bg-blue-50 h-full p-14 flex justify-center flex-col items-center'>
+            <div className='bg-blue-50 min-h-[70vh] p-14 flex justify-center flex-col items-center'>
 
                 <div className='md:w-[75%] bg-white p-10 border-t-8 border-t-blue-900 rounded-t-lg'>
                     <h1 className="text-5xl font-bold mb-2">Question and answer</h1>
@@ -235,7 +235,7 @@ const McqQns = () => {
                 instructions={instructions}
                 defaultOpen={false}
                 labels={{
-                    title: "StydyPal Copilot",
+                    title: "StudyPal Copilot",
                     initial: "Hi you! 👋 You can ask me to deliver you personalized MCQ questions and hint to them.",
                 }}
                 clickOutsideToClose={false}

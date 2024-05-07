@@ -12,6 +12,7 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
 });
 
+//copilotBackend implementation
 const HEADERS = {
   // make sure to modify CORS headers to match your frontend's origin
   "Access-Control-Allow-Origin": "http://localhost:5173",

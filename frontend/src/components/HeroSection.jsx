@@ -22,7 +22,7 @@ const HeroSection = () => {
                                 <MdKeyboardDoubleArrowRight className="text-xl" />
                             </button>
                         </Link>
-                        <a href="https://quine.sh/quests/creator">
+                        <a href="https://quine.sh/repo/rajesh-adk-137-StudyPal-793889064">
                             <button className='bg-[#4fe331] text-black font-bold px-5 py-3 rounded-lg flex items-center justify-center space-x-2 transition duration-300 ease-in-out hover:bg-[#3fb427] hover:shadow-lg'>
                                 <span>VOTE ON QUINE</span>
                                 <MdKeyboardDoubleArrowRight className="text-xl" />
