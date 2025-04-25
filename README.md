@@ -70,7 +70,7 @@ npm install
 ```
 Navigate to backend directory
 ```bash
-npm install
+cd backend
 ```
 
 #### Set up environment variables:
